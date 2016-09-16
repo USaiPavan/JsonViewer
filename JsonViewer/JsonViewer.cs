@@ -334,32 +334,36 @@ namespace EPocalipse.Json.Viewer
 
         private void btnFormat_Click(object sender, EventArgs e)
         {
-            FormatJSON();
+            var formattedJson = FormatJson(txtJson.Text);
+            txtJson.Text = formattedJson;
         }
 
-        private void FormatJSON()
+        private string FormatJson(string inputJson)
         {
             try
             {
-                string json = txtJson.Text;
-                JsonSerializer s = new JsonSerializer();
-                JsonReader reader = new JsonReader(new StringReader(json));
-                Object jsonObject = s.Deserialize(reader);
+                var jsonSerializer = new JsonSerializer();
+                var jsonReader = new JsonReader(new StringReader(inputJson));
+                var jsonObject = jsonSerializer.Deserialize(jsonReader);
                 if (jsonObject != null)
                 {
-                    StringWriter sWriter = new StringWriter();
-                    JsonWriter writer = new JsonWriter(sWriter);
-                    writer.Formatting = Formatting.Indented;
-                    writer.Indentation = 4;
-                    writer.IndentChar = ' ';
-                    s.Serialize(writer, jsonObject);
-                    txtJson.Text = sWriter.ToString();
+                    var sWriter = new StringWriter();
+                    var writer = new JsonWriter(sWriter)
+                    {
+                        Formatting = Formatting.Indented,
+                        Indentation = 4,
+                        IndentChar = ' '
+                    };
+                    jsonSerializer.Serialize(writer, jsonObject);
+                    return sWriter.ToString();
                 }
             }
             catch (Exception ex)
             {
                 ShowException(ex);
             }
+
+            return string.Empty;
         }
 
         private void ShowException(Exception e)
@@ -640,17 +644,31 @@ namespace EPocalipse.Json.Viewer
             txtJson.Text = text;
         }
 
+
+
+        /// <summary>
+        /// Handles the Click event of the copyJSONToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void copyJSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var node = GetSelectedTreeNode();
-            var json = txtJson.Text;
-            var s = new JsonSerializer();
-            var reader = new JsonReader(new StringReader(json));
-            var jsonObject = s.Deserialize(reader) as  JavaScriptObject;
+            var selectedTreeNode = GetSelectedTreeNode();
+            var jsonText = txtJson.Text;
+            var jsonSerializer = new JsonSerializer();
+            var jsonReader = new JsonReader(new StringReader(jsonText));
+            var jsonObject = jsonSerializer.Deserialize(jsonReader) as JavaScriptObject;
 
-            var requiredJavscriptObject = SearchForJavascriptObject(jsonObject, node.JsonObject.Text);
-
-            Clipboard.SetText(JavaScriptConvert.SerializeObject(requiredJavscriptObject));
+            var requiredJavscriptObject = SearchForJavascriptObject(jsonObject, selectedTreeNode.JsonObject.Text);
+            if (requiredJavscriptObject != null)
+            {
+                var formattedJson = FormatJson(JavaScriptConvert.SerializeObject(requiredJavscriptObject));
+                Clipboard.SetText(formattedJson);
+            }
+            else
+            {
+                Clipboard.SetText(string.Empty);
+            }
         }
 
 
@@ -685,7 +703,7 @@ namespace EPocalipse.Json.Viewer
                         {
                             returnValue = SearchForJavascriptObject(currentJavascriptObject, jsonObjectText);
                         }
-                        
+
                     }
                 }
             }
@@ -693,7 +711,7 @@ namespace EPocalipse.Json.Viewer
             return returnValue;
         }
     }
-    
+
     public struct ErrorDetails
     {
         internal string _err;
