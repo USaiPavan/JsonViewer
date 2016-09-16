@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Diagnostics;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Design;
@@ -333,6 +334,11 @@ namespace EPocalipse.Json.Viewer
 
         private void btnFormat_Click(object sender, EventArgs e)
         {
+            FormatJSON();
+        }
+
+        private void FormatJSON()
+        {
             try
             {
                 string json = txtJson.Text;
@@ -633,8 +639,61 @@ namespace EPocalipse.Json.Viewer
             }
             txtJson.Text = text;
         }
-    }
 
+        private void copyJSONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var node = GetSelectedTreeNode();
+            var json = txtJson.Text;
+            var s = new JsonSerializer();
+            var reader = new JsonReader(new StringReader(json));
+            var jsonObject = s.Deserialize(reader) as  JavaScriptObject;
+
+            var requiredJavscriptObject = SearchForJavascriptObject(jsonObject, node.JsonObject.Text);
+
+            Clipboard.SetText(JavaScriptConvert.SerializeObject(requiredJavscriptObject));
+        }
+
+
+        /// <summary>
+        /// Searches for javascript object recursively until it finds the node
+        /// </summary>
+        /// <param name="jsonObject">The json object.</param>
+        /// <param name="jsonObjectText">The json object text.</param>
+        /// <returns></returns>
+        private JavaScriptObject SearchForJavascriptObject(JavaScriptObject jsonObject, string jsonObjectText)
+        {
+            JavaScriptObject returnValue = null;
+
+            foreach (var element in jsonObject)
+            {
+                if (element.Key == jsonObjectText)
+                {
+                    object outValue;
+                    if (jsonObject.TryGetValue(element.Key, out outValue))
+                    {
+                        returnValue = outValue as JavaScriptObject;
+                        return returnValue;
+                    }
+                }
+                else
+                {
+                    object outValue;
+                    if (jsonObject.TryGetValue(element.Key, out outValue))
+                    {
+                        var currentJavascriptObject = outValue as JavaScriptObject;
+                        if (currentJavascriptObject != null)
+                        {
+                            returnValue = SearchForJavascriptObject(currentJavascriptObject, jsonObjectText);
+                        }
+                        
+                    }
+                }
+            }
+
+            return returnValue;
+        }
+    }
+    
     public struct ErrorDetails
     {
         internal string _err;

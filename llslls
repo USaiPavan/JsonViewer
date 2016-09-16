@@ -1,0 +1,162 @@
+[33mcommit bf18d27f1992567d17c3ae99b15d82a409013cfe[m
+Author: Sai Pavan Viswanath Upadhyayula <usaipavan@outlook.com>
+Date:   Wed Jun 1 09:41:53 2016 -0500
+
+    Initial commit after forking. As a first step upgraded the project from VS2008 to VS2015 as it would allow things to be done
+
+[33mcommit 71e028f85099757e91c56693ca6d268df74500fb[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Sat Dec 11 22:06:32 2010 -0500
+
+    Added readme
+
+[33mcommit bbb034ba8bb21b6b86ab0cedd7bb09b9dedcd056[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Sat Dec 11 21:57:33 2010 -0500
+
+    Fixed targets
+
+[33mcommit ec3c7eeaa299f4acc625eb894fec25b52fc29305[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Sat Dec 11 21:24:50 2010 -0500
+
+    Upgraded to Sharpdevelop 4.0
+
+[33mcommit 739b85bd49e018f0c8a6593734d0d8b2777fdf7e[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Sat Nov 27 12:33:50 2010 -0500
+
+    Comments
+
+[33mcommit a43a6c34acc4e43bba5923db8c7f73bdc8ee40ea[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Sat Nov 27 01:08:42 2010 -0500
+
+    Dates are now displayed in human readable format
+
+[33mcommit d10626733b15e096b0f4db6ffa3ff0763e7b6c22[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Fri Nov 26 14:30:48 2010 -0500
+
+    Cleaned up JsonObjectTree.cs
+
+[33mcommit f451db224387382cae87f75496fc6e49f12e607b[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Fri Nov 26 12:40:05 2010 -0500
+
+    Added note in Readme file.
+
+[33mcommit 34bea84a4d84dcea0ab6cdfc1ec2278e7170e9c4[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Fri Nov 26 12:38:55 2010 -0500
+
+    Made privates static in JsonObjectTree.cs
+
+[33mcommit fb63d8c2b6ed42c0ab949f4c22337cb4b1463179[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Fri Nov 26 10:38:32 2010 -0500
+
+    There is now a Request as well as response header.
+
+[33mcommit 06e8a5ef4afd84507f9d34e145c6293b181ceb3b[m
+Author: Justin Dearing <zippy1981@gmail.com>
+Date:   Thu Nov 25 11:28:03 2010 -0500
+
+    Better reference handling for fiddler.exe and microsoft.visualstudio.debuggervisualizers.dll
+
+[33mcommit 01de5be7a211279823ace977a98e158c6103bacb[m
+Author: CodePlex TFS <no-reply@codeplex.com>
+Date:   Wed Jul 28 17:08:20 2010 +0000
+
+    Checked in by server upgrade
+
+[33mcommit 402125ceae2f61d686eefa9a1eb743a079470dcc[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Wed Jan 28 09:28:41 2009 +0000
+
+    updated to vs2008 and removed need for config changes in host application
+
+[33mcommit 7a484bbd0caac49df2c606e284a50a8718759900[m
+Author: R S Robbins <no-reply@codeplex.com>
+Date:   Sat Feb 9 18:51:47 2008 +0000
+
+    About dialog box requires some new files
+
+[33mcommit 7d5878eca2cf892f292e171f751c1a21dbcef9d4[m
+Author: R S Robbins <no-reply@codeplex.com>
+Date:   Sat Feb 9 18:48:10 2008 +0000
+
+    Changes made to add a standard file menu.
+
+[33mcommit 689d0b737531464d5042bf058dd1827d90e0344e[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Mon Jul 2 15:37:40 2007 +0000
+
+    Compatibility with Fiddler 2.1
+    Better error handling when parsing json strings
+
+[33mcommit 091facb9d42613af6663c9506a11b8b4965709a4[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Sat Jun 2 21:06:21 2007 +0000
+
+    Wording
+
+[33mcommit 628f05797a39b39ab383065fd9edecf3cb01bbc5[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Sat Jun 2 20:55:25 2007 +0000
+
+    fixed references
+
+[33mcommit f6fe09e3818226a838145b1ed9d817fd1233ec8f[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Sat Jun 2 20:36:56 2007 +0000
+
+    1) Added Newtonsoft.Json.dll
+    2) Added some bitmaps used in image lists
+    3) Added sample grid visualizer
+
+[33mcommit 5216ce014e2e235106f2afe235413061cabe27cc[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Fri Jun 1 15:47:54 2007 +0000
+
+[33mcommit 7f9aa5c7620c8732ca9bf7926162a2fc70b5ddbf[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Fri Jun 1 15:40:54 2007 +0000
+
+    Added samples folder.
+    Added reame file.
+
+[33mcommit 15d66dd83cb51853a4fe7ba85ad322636aa49b1d[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Fri Jun 1 00:21:40 2007 +0000
+
+[33mcommit 419cf51ccc51b8aed309a65675cd827372b6207f[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Fri Jun 1 00:21:30 2007 +0000
+
+    Added a new internal text plugin for dates composed as y,m,d,h,m,s,ms components
+
+[33mcommit eb67aa10f775cfa153671759333ab9b1dc2e0241[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Fri Jun 1 00:02:32 2007 +0000
+
+    Better handling of plugin errors
+    Added sample files
+
+[33mcommit 5e5c50f24c1b814a901fdc3b9d651c029996a7b9[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Thu May 31 23:15:00 2007 +0000
+
+    Refactoring, renaming
+
+[33mcommit 03ee977740fa05025830239e0455f7ae63fe3a0f[m
+Author: Eyal P <no-reply@codeplex.com>
+Date:   Thu May 31 22:45:31 2007 +0000
+
+    Initial version
+
+[33mcommit a58afd48ffc739a448bdbebab556e16d98c8e647[m
+Author: MCLWEB <no-reply@codeplex.com>
+Date:   Thu May 31 22:40:31 2007 +0000
+
+    Created team project folder $/JsonViewer via the Team Project Creation Wizard

@@ -60,10 +60,11 @@ namespace EPocalipse.Json.Viewer
             this.btnStrip = new System.Windows.Forms.ToolStripSplitButton();
             this.btnStripToCurly = new System.Windows.Forms.ToolStripMenuItem();
             this.btnStripToSqr = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblError = new System.Windows.Forms.LinkLabel();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.removenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSpecialCharsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblError = new System.Windows.Forms.LinkLabel();
+            this.copyJSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spcViewer.Panel1.SuspendLayout();
             this.spcViewer.Panel2.SuspendLayout();
             this.spcViewer.SuspendLayout();
@@ -79,7 +80,8 @@ namespace EPocalipse.Json.Viewer
             // spcViewer
             // 
             this.spcViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spcViewer.Location = new System.Drawing.Point(3, 3);
+            this.spcViewer.Location = new System.Drawing.Point(4, 4);
+            this.spcViewer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.spcViewer.Name = "spcViewer";
             // 
             // spcViewer.Panel1
@@ -91,8 +93,9 @@ namespace EPocalipse.Json.Viewer
             // 
             this.spcViewer.Panel2.Controls.Add(this.pnlVisualizer);
             this.spcViewer.Panel2.Controls.Add(this.cbVisualizers);
-            this.spcViewer.Size = new System.Drawing.Size(778, 572);
-            this.spcViewer.SplitterDistance = 552;
+            this.spcViewer.Size = new System.Drawing.Size(1040, 706);
+            this.spcViewer.SplitterDistance = 737;
+            this.spcViewer.SplitterWidth = 5;
             this.spcViewer.TabIndex = 5;
             // 
             // tvJson
@@ -104,9 +107,10 @@ namespace EPocalipse.Json.Viewer
             this.tvJson.ImageIndex = 0;
             this.tvJson.ImageList = this.imgList;
             this.tvJson.Location = new System.Drawing.Point(0, 0);
+            this.tvJson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tvJson.Name = "tvJson";
             this.tvJson.SelectedImageIndex = 0;
-            this.tvJson.Size = new System.Drawing.Size(552, 540);
+            this.tvJson.Size = new System.Drawing.Size(737, 667);
             this.tvJson.TabIndex = 3;
             this.tvJson.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvJson_BeforeExpand);
             this.tvJson.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvJson_AfterSelect);
@@ -120,41 +124,42 @@ namespace EPocalipse.Json.Viewer
             this.mnuExpandAll,
             this.toolStripMenuItem1,
             this.mnuCopy,
-            this.mnuCopyValue});
+            this.mnuCopyValue,
+            this.copyJSONToolStripMenuItem});
             this.mnuTree.Name = "mnuTree";
-            this.mnuTree.Size = new System.Drawing.Size(129, 98);
+            this.mnuTree.Size = new System.Drawing.Size(153, 142);
             this.mnuTree.Opening += new System.ComponentModel.CancelEventHandler(this.mnuTree_Opening);
             // 
             // mnuFind
             // 
             this.mnuFind.Name = "mnuFind";
-            this.mnuFind.Size = new System.Drawing.Size(128, 22);
+            this.mnuFind.Size = new System.Drawing.Size(152, 22);
             this.mnuFind.Text = "&Find";
             this.mnuFind.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
             // 
             // mnuExpandAll
             // 
             this.mnuExpandAll.Name = "mnuExpandAll";
-            this.mnuExpandAll.Size = new System.Drawing.Size(128, 22);
+            this.mnuExpandAll.Size = new System.Drawing.Size(152, 22);
             this.mnuExpandAll.Text = "Expand &All";
             this.mnuExpandAll.Click += new System.EventHandler(this.expandallToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuCopy
             // 
             this.mnuCopy.Name = "mnuCopy";
-            this.mnuCopy.Size = new System.Drawing.Size(128, 22);
+            this.mnuCopy.Size = new System.Drawing.Size(152, 22);
             this.mnuCopy.Text = "&Copy";
             this.mnuCopy.Click += new System.EventHandler(this.mnuCopy_Click);
             // 
             // mnuCopyValue
             // 
             this.mnuCopyValue.Name = "mnuCopyValue";
-            this.mnuCopyValue.Size = new System.Drawing.Size(128, 22);
+            this.mnuCopyValue.Size = new System.Drawing.Size(152, 22);
             this.mnuCopyValue.Text = "Copy &Value";
             this.mnuCopyValue.Click += new System.EventHandler(this.mnuCopyValue_Click);
             // 
@@ -172,9 +177,10 @@ namespace EPocalipse.Json.Viewer
             this.pnlFind.Controls.Add(this.txtFind);
             this.pnlFind.Controls.Add(this.lblFind);
             this.pnlFind.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFind.Location = new System.Drawing.Point(0, 540);
+            this.pnlFind.Location = new System.Drawing.Point(0, 667);
+            this.pnlFind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlFind.Name = "pnlFind";
-            this.pnlFind.Size = new System.Drawing.Size(552, 32);
+            this.pnlFind.Size = new System.Drawing.Size(737, 39);
             this.pnlFind.TabIndex = 6;
             this.pnlFind.Visible = false;
             // 
@@ -186,21 +192,23 @@ namespace EPocalipse.Json.Viewer
             this.btnCloseFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCloseFind.FlatAppearance.BorderSize = 0;
             this.btnCloseFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseFind.Location = new System.Drawing.Point(525, 7);
+            this.btnCloseFind.Location = new System.Drawing.Point(701, 9);
+            this.btnCloseFind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCloseFind.Name = "btnCloseFind";
-            this.btnCloseFind.Size = new System.Drawing.Size(16, 16);
+            this.btnCloseFind.Size = new System.Drawing.Size(21, 20);
             this.btnCloseFind.TabIndex = 2;
             this.btnCloseFind.UseVisualStyleBackColor = false;
             this.btnCloseFind.Click += new System.EventHandler(this.btnCloseFind_Click);
             // 
             // txtFind
             // 
-            this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFind.Location = new System.Drawing.Point(32, 6);
+            this.txtFind.Location = new System.Drawing.Point(43, 7);
+            this.txtFind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(479, 20);
+            this.txtFind.Size = new System.Drawing.Size(639, 22);
             this.txtFind.TabIndex = 1;
             this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyDown);
@@ -208,9 +216,10 @@ namespace EPocalipse.Json.Viewer
             // lblFind
             // 
             this.lblFind.AutoSize = true;
-            this.lblFind.Location = new System.Drawing.Point(3, 9);
+            this.lblFind.Location = new System.Drawing.Point(4, 11);
+            this.lblFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFind.Name = "lblFind";
-            this.lblFind.Size = new System.Drawing.Size(27, 13);
+            this.lblFind.Size = new System.Drawing.Size(34, 16);
             this.lblFind.TabIndex = 0;
             this.lblFind.Text = "&Find";
             // 
@@ -218,9 +227,10 @@ namespace EPocalipse.Json.Viewer
             // 
             this.pnlVisualizer.ContextMenuStrip = this.mnuVisualizerPnl;
             this.pnlVisualizer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlVisualizer.Location = new System.Drawing.Point(0, 21);
+            this.pnlVisualizer.Location = new System.Drawing.Point(0, 24);
+            this.pnlVisualizer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlVisualizer.Name = "pnlVisualizer";
-            this.pnlVisualizer.Size = new System.Drawing.Size(222, 551);
+            this.pnlVisualizer.Size = new System.Drawing.Size(298, 682);
             this.pnlVisualizer.TabIndex = 6;
             // 
             // mnuVisualizerPnl
@@ -229,7 +239,7 @@ namespace EPocalipse.Json.Viewer
             this.mnuShowOnRight,
             this.mnuShowOnBottom});
             this.mnuVisualizerPnl.Name = "mnuVisualizerPnl";
-            this.mnuVisualizerPnl.Size = new System.Drawing.Size(109, 48);
+            this.mnuVisualizerPnl.Size = new System.Drawing.Size(115, 48);
             // 
             // mnuShowOnRight
             // 
@@ -237,7 +247,7 @@ namespace EPocalipse.Json.Viewer
             this.mnuShowOnRight.CheckOnClick = true;
             this.mnuShowOnRight.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnuShowOnRight.Name = "mnuShowOnRight";
-            this.mnuShowOnRight.Size = new System.Drawing.Size(108, 22);
+            this.mnuShowOnRight.Size = new System.Drawing.Size(114, 22);
             this.mnuShowOnRight.Text = "&Right";
             this.mnuShowOnRight.Click += new System.EventHandler(this.rightToolStripMenuItem_Click);
             // 
@@ -245,7 +255,7 @@ namespace EPocalipse.Json.Viewer
             // 
             this.mnuShowOnBottom.CheckOnClick = true;
             this.mnuShowOnBottom.Name = "mnuShowOnBottom";
-            this.mnuShowOnBottom.Size = new System.Drawing.Size(108, 22);
+            this.mnuShowOnBottom.Size = new System.Drawing.Size(114, 22);
             this.mnuShowOnBottom.Text = "&Bottom";
             this.mnuShowOnBottom.Click += new System.EventHandler(this.rightToolStripMenuItem_Click);
             // 
@@ -256,8 +266,9 @@ namespace EPocalipse.Json.Viewer
             this.cbVisualizers.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbVisualizers.FormattingEnabled = true;
             this.cbVisualizers.Location = new System.Drawing.Point(0, 0);
+            this.cbVisualizers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbVisualizers.Name = "cbVisualizers";
-            this.cbVisualizers.Size = new System.Drawing.Size(222, 21);
+            this.cbVisualizers.Size = new System.Drawing.Size(298, 24);
             this.cbVisualizers.Sorted = true;
             this.cbVisualizers.TabIndex = 7;
             this.cbVisualizers.SelectedIndexChanged += new System.EventHandler(this.cbVisualizers_SelectedIndexChanged);
@@ -269,18 +280,20 @@ namespace EPocalipse.Json.Viewer
             this.tabControl.Controls.Add(this.pageTextView);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(792, 604);
+            this.tabControl.Size = new System.Drawing.Size(1056, 743);
             this.tabControl.TabIndex = 6;
             // 
             // pageTreeView
             // 
             this.pageTreeView.Controls.Add(this.spcViewer);
-            this.pageTreeView.Location = new System.Drawing.Point(4, 22);
+            this.pageTreeView.Location = new System.Drawing.Point(4, 25);
+            this.pageTreeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pageTreeView.Name = "pageTreeView";
-            this.pageTreeView.Padding = new System.Windows.Forms.Padding(3);
-            this.pageTreeView.Size = new System.Drawing.Size(784, 578);
+            this.pageTreeView.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pageTreeView.Size = new System.Drawing.Size(1048, 714);
             this.pageTreeView.TabIndex = 0;
             this.pageTreeView.Text = "Viewer";
             this.pageTreeView.UseVisualStyleBackColor = true;
@@ -290,10 +303,11 @@ namespace EPocalipse.Json.Viewer
             this.pageTextView.Controls.Add(this.txtJson);
             this.pageTextView.Controls.Add(this.toolStrip1);
             this.pageTextView.Controls.Add(this.lblError);
-            this.pageTextView.Location = new System.Drawing.Point(4, 22);
+            this.pageTextView.Location = new System.Drawing.Point(4, 25);
+            this.pageTextView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pageTextView.Name = "pageTextView";
-            this.pageTextView.Padding = new System.Windows.Forms.Padding(3);
-            this.pageTextView.Size = new System.Drawing.Size(784, 578);
+            this.pageTextView.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pageTextView.Size = new System.Drawing.Size(1048, 714);
             this.pageTextView.TabIndex = 1;
             this.pageTextView.Text = "Text";
             this.pageTextView.UseVisualStyleBackColor = true;
@@ -306,12 +320,13 @@ namespace EPocalipse.Json.Viewer
             this.txtJson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtJson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtJson.HideSelection = false;
-            this.txtJson.Location = new System.Drawing.Point(3, 28);
+            this.txtJson.Location = new System.Drawing.Point(4, 29);
+            this.txtJson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtJson.MaxLength = 0;
             this.txtJson.Multiline = true;
             this.txtJson.Name = "txtJson";
             this.txtJson.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtJson.Size = new System.Drawing.Size(778, 523);
+            this.txtJson.Size = new System.Drawing.Size(1040, 651);
             this.txtJson.TabIndex = 4;
             this.txtJson.TextChanged += new System.EventHandler(this.txtJson_TextChanged);
             // 
@@ -324,9 +339,9 @@ namespace EPocalipse.Json.Viewer
             this.btnFormat,
             this.btnStrip,
             this.toolStripSplitButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Location = new System.Drawing.Point(4, 4);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(778, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1040, 25);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -336,7 +351,7 @@ namespace EPocalipse.Json.Viewer
             this.btnPaste.Image = ((System.Drawing.Image)(resources.GetObject("btnPaste.Image")));
             this.btnPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPaste.Name = "btnPaste";
-            this.btnPaste.Size = new System.Drawing.Size(38, 22);
+            this.btnPaste.Size = new System.Drawing.Size(39, 22);
             this.btnPaste.Text = "&Paste";
             this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
@@ -346,7 +361,7 @@ namespace EPocalipse.Json.Viewer
             this.btnCopy.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.Image")));
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(36, 22);
+            this.btnCopy.Size = new System.Drawing.Size(39, 22);
             this.btnCopy.Text = "&Copy";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
@@ -361,7 +376,7 @@ namespace EPocalipse.Json.Viewer
             this.btnFormat.Image = ((System.Drawing.Image)(resources.GetObject("btnFormat.Image")));
             this.btnFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFormat.Name = "btnFormat";
-            this.btnFormat.Size = new System.Drawing.Size(45, 22);
+            this.btnFormat.Size = new System.Drawing.Size(49, 22);
             this.btnFormat.Text = "&Format";
             this.btnFormat.Click += new System.EventHandler(this.btnFormat_Click);
             // 
@@ -374,38 +389,23 @@ namespace EPocalipse.Json.Viewer
             this.btnStrip.Image = ((System.Drawing.Image)(resources.GetObject("btnStrip.Image")));
             this.btnStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnStrip.Name = "btnStrip";
-            this.btnStrip.Size = new System.Drawing.Size(71, 22);
+            this.btnStrip.Size = new System.Drawing.Size(72, 22);
             this.btnStrip.Text = "Strip to {}";
             this.btnStrip.ButtonClick += new System.EventHandler(this.btnStripToCurly_Click);
             // 
             // btnStripToCurly
             // 
             this.btnStripToCurly.Name = "btnStripToCurly";
-            this.btnStripToCurly.Size = new System.Drawing.Size(152, 22);
+            this.btnStripToCurly.Size = new System.Drawing.Size(123, 22);
             this.btnStripToCurly.Text = "Strip to {}";
             this.btnStripToCurly.Click += new System.EventHandler(this.btnStripToCurly_Click);
             // 
             // btnStripToSqr
             // 
             this.btnStripToSqr.Name = "btnStripToSqr";
-            this.btnStripToSqr.Size = new System.Drawing.Size(152, 22);
+            this.btnStripToSqr.Size = new System.Drawing.Size(123, 22);
             this.btnStripToSqr.Text = "Strip to []";
             this.btnStripToSqr.Click += new System.EventHandler(this.btnStripToSqr_Click);
-            // 
-            // lblError
-            // 
-            this.lblError.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.lblError.LinkColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(3, 551);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(778, 24);
-            this.lblError.TabIndex = 5;
-            this.lblError.TabStop = true;
-            this.lblError.Text = "aa";
-            this.lblError.VisitedLinkColor = System.Drawing.Color.Red;
-            this.lblError.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblError_LinkClicked);
             // 
             // toolStripSplitButton1
             // 
@@ -416,31 +416,55 @@ namespace EPocalipse.Json.Viewer
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(130, 22);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(141, 22);
             this.toolStripSplitButton1.Text = "Remove new lines (\\n)";
             this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.removeNewLineMenuItem_Click);
             // 
             // removenToolStripMenuItem
             // 
             this.removenToolStripMenuItem.Name = "removenToolStripMenuItem";
-            this.removenToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.removenToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.removenToolStripMenuItem.Text = "Remove new lines (\\n)";
             this.removenToolStripMenuItem.Click += new System.EventHandler(this.removeNewLineMenuItem_Click);
             // 
             // removeSpecialCharsToolStripMenuItem
             // 
             this.removeSpecialCharsToolStripMenuItem.Name = "removeSpecialCharsToolStripMenuItem";
-            this.removeSpecialCharsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.removeSpecialCharsToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.removeSpecialCharsToolStripMenuItem.Text = "Remove special chars (\\)";
             this.removeSpecialCharsToolStripMenuItem.Click += new System.EventHandler(this.removeSpecialCharsToolStripMenuItem_Click);
             // 
+            // lblError
+            // 
+            this.lblError.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+            this.lblError.LinkColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(4, 680);
+            this.lblError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(1040, 30);
+            this.lblError.TabIndex = 5;
+            this.lblError.TabStop = true;
+            this.lblError.Text = "aa";
+            this.lblError.VisitedLinkColor = System.Drawing.Color.Red;
+            this.lblError.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblError_LinkClicked);
+            // 
+            // copyJSONToolStripMenuItem
+            // 
+            this.copyJSONToolStripMenuItem.Name = "copyJSONToolStripMenuItem";
+            this.copyJSONToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyJSONToolStripMenuItem.Text = "Copy JSON";
+            this.copyJSONToolStripMenuItem.Click += new System.EventHandler(this.copyJSONToolStripMenuItem_Click);
+            // 
             // JsonViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "JsonViewer";
-            this.Size = new System.Drawing.Size(792, 604);
+            this.Size = new System.Drawing.Size(1056, 743);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.JsonViewer_KeyDown);
             this.spcViewer.Panel1.ResumeLayout(false);
             this.spcViewer.Panel2.ResumeLayout(false);
@@ -495,6 +519,6 @@ namespace EPocalipse.Json.Viewer
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem removenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSpecialCharsToolStripMenuItem;
-
+        private System.Windows.Forms.ToolStripMenuItem copyJSONToolStripMenuItem;
     }
 }
